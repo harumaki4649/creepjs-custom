@@ -1,8 +1,13 @@
 # CreepJS
 
-> **Disclaimer**  
-This repository is a standalone project and has no affiliation with any external websites, organizations, or projects that may use a similar name or reference this repo.
-
+> [!CAUTION]
+> **SECURITY ALERT: EXTERNAL DOMAINS ARE UNSAFE**
+>
+> **The ONLY official live deployment is on GitHub Pages.**
+> Any `.org`, `.com`, or custom domain claiming to be CreepJS is an **unauthorized mirror** and should be treated as a malicious honeypot designed to steal your fingerprint data.
+>
+> * ✅ **Official:** `https://abrahamjuliot.github.io/creepjs`
+> * ❌ **Unsafe:** All other URLs.
 
 [https://abrahamjuliot.github.io/creepjs](https://abrahamjuliot.github.io/creepjs)
 
