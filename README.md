@@ -1,4 +1,4 @@
-# CreepJS
+# CreepJS™
 
 > [!CAUTION]
 > **SECURITY ALERT: EXTERNAL DOMAINS ARE UNSAFE**
@@ -23,27 +23,27 @@ The purpose of this project is to shed light on weaknesses and privacy leaks amo
 
 Tests are focused on:
 
-- Tor Browser (SL 1 & 2)
-- Firefox (RFP)
-- ungoogled-chromium (fingerprint deception)
-- Brave Browser (Standard/Strict)
-- puppeteer-extra
-- FakeBrowser
-- Bromite
-- uBlock Origin (aopr)
-- NoScript
-- DuckDuckGo Privacy Essentials
-- JShelter (JavaScript Restrictor)
-- Privacy Badger
-- Privacy Possum
-- Random User-Agent
-- User Agent Switcher and Manager
-- CanvasBlocker
-- Trace
-- CyDec
-- Chameleon
-- ScriptSafe
-- Windscribe
+* Tor Browser (SL 1 & 2)
+* Firefox (RFP)
+* ungoogled-chromium (fingerprint deception)
+* Brave Browser (Standard/Strict)
+* puppeteer-extra
+* FakeBrowser
+* Bromite
+* uBlock Origin (aopr)
+* NoScript
+* DuckDuckGo Privacy Essentials
+* JShelter (JavaScript Restrictor)
+* Privacy Badger
+* Privacy Possum
+* Random User-Agent
+* User Agent Switcher and Manager
+* CanvasBlocker
+* Trace
+* CyDec
+* Chameleon
+* ScriptSafe
+* Windscribe
 
 ## Tests
 
@@ -71,13 +71,13 @@ Tests are focused on:
 
 ## Supported
 
-- layout rendering engines: `Gecko`, `Goanna`, `Blink`, `WebKit`
-- JS runtime engines: `SpiderMonkey`, `JavaScriptCore`, `V8`
+* layout rendering engines: `Gecko`, `Goanna`, `Blink`, `WebKit`
+* JS runtime engines: `SpiderMonkey`, `JavaScriptCore`, `V8`
 
 ## Interact with the fingerprint objects
 
-- `window.Fingerprint`
-- `window.Creep`
+* `window.Fingerprint`
+* `window.Creep`
 
 ## Develop
 
@@ -88,4 +88,13 @@ Contributions are welcome.
 🟪 watch `pnpm watch:dev`<br>
 🟦 release to GitHub pages `pnpm build`<br>
 
-If you would like to test on a secure connection, GitHub Codespaces is supported. It is discouraged to host a copy of this repo on a personal site. The goal of this project is to conduct research and provide education, not to create a fingerprinting library.
+If you would like to test on a secure connection, GitHub Codespaces is supported. The goal of this project is to conduct research and provide education, not to create a fingerprinting library.
+
+> [!IMPORTANT]
+> **LICENSE & TRADEMARK POLICY**
+> This project is governed by a [Trademark Policy](TRADEMARKS.md).
+>
+> * **Code:** You are free to fork and modify the code under the MIT License.
+> * **Name:** The name "**CreepJS**" is trademarked. You may **not** use it for commercial products or public websites (e.g., `creepjs.org` is strictly prohibited).
+>
+> Please refrain from hosting public mirrors. To prevent user confusion, distinct public forks **must be renamed**.
