@@ -294,6 +294,88 @@
 			</div>
 		</fingerprint>
 	</div>
-</body>
+	<script>
+// CreepJSの処理完了を監視
+function waitForCreepJSComplete() {
+    return new Promise((resolve) => {
+        const checkInterval = setInterval(() => {
+            // FP IDが計算完了しているか確認
+            const fpHeader = document.querySelector('.fingerprint-header-container .ellipsis-all');
+            if (fpHeader && !fpHeader.textContent.includes('Computing')) {
+                clearInterval(checkInterval);
+                resolve();
+            }
+        }, 100);
+        
+        // 最大30秒でタイムアウト
+        setTimeout(() => {
+            clearInterval(checkInterval);
+            resolve();
+        }, 30000);
+    });
+}
 
+// データ収集関数
+async function collectCreepJSData() {
+    await waitForCreepJSComplete();
+    
+    const data = {
+        // FP ID
+        fingerprintId: document.querySelector('.fingerprint-header-container .ellipsis-all')?.textContent?.replace('FP ID: ', '').trim(),
+        
+        // Fuzzy FP
+        fuzzyFingerprint: document.querySelector('.fuzzy-fp span')?.textContent?.trim(),
+        
+        // 処理時間
+        processingTime: document.querySelector('.time')?.textContent?.trim(),
+        
+        // Headless検出
+        headless: {
+            chromium: document.querySelector('#headless-resistance-detection .col-six:first-child')?.textContent?.match(/chromium:\s*(.+)/)?.[1]?.trim(),
+            likeHeadless: document.querySelector('#headless-resistance-detection .col-six:first-child')?.textContent?.match(/like headless:\s*(.+)/)?.[1]?.trim(),
+            headlessPercent: document.querySelector('#headless-resistance-detection .col-six:first-child')?.textContent?.match(/headless:\s*(.+)/)?.[1]?.trim(),
+            stealth: document.querySelector('#headless-resistance-detection .col-six:first-child')?.textContent?.match(/stealth:\s*(.+)/)?.[1]?.trim()
+        },
+        
+        // Resistance検出
+        resistance: {
+            privacy: document.querySelector('#headless-resistance-detection .col-six:last-child')?.textContent?.match(/privacy:\s*(.+)/)?.[1]?.trim(),
+            security: document.querySelector('#headless-resistance-detection .col-six:last-child')?.textContent?.match(/security:\s*(.+)/)?.[1]?.trim(),
+            mode: document.querySelector('#headless-resistance-detection .col-six:last-child')?.textContent?.match(/mode:\s*(.+)/)?.[1]?.trim(),
+            extension: document.querySelector('#headless-resistance-detection .col-six:last-child')?.textContent?.match(/extension:\s*(.+)/)?.[1]?.trim()
+        },
+        
+        // ブラウザ情報
+        userAgent: document.querySelector('.block-text')?.textContent?.trim(),
+        
+        // 全HTMLを送信（オプション）
+        fullHTML: document.getElementById('fingerprint-data')?.innerHTML
+    };
+    
+    return data;
+}
+
+// ページロード後にデータを送信
+window.addEventListener('load', async () => {
+    try {
+        const data = await collectCreepJSData();
+        
+        // 親ページにデータを送信
+        window.parent.postMessage({
+            type: 'creepjs-result',
+            data: data,
+            timestamp: Date.now()
+        }, '*'); // 本番環境では '*' を特定のオリジンに変更してください
+        
+        console.log('CreepJS data sent to parent:', data);
+    } catch (error) {
+        console.error('Error collecting CreepJS data:', error);
+        window.parent.postMessage({
+            type: 'creepjs-error',
+            error: error.message
+        }, '*');
+    }
+});
+</script>
+</body>
 </html>
